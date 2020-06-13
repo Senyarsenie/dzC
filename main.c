@@ -30,8 +30,8 @@ struct user {
 void  students_menu() {
     printf("\n");
     SetConsoleCP(1251);
-    SetConsoleOutputCP(1251); //руссификатор для записи данных в файл
-    setlocale(LC_ALL, "Rus"); //руссификатор для консоли
+    SetConsoleOutputCP(1251); //файл
+    setlocale(LC_ALL, "Rus"); //  консоль
     FILE* file;
 
     char str[N];
@@ -41,12 +41,12 @@ void  students_menu() {
     char sim[N] = ";";
     char* istr;
 
-    file = fopen("students.csv", "r");                               // подсчет строк
+    file = fopen("students.csv", "r");                               // колво строк
     if (file == NULL) {
         printf("No such file");
         exit(-333);
     }
-    while (!feof(file)) {                                         // пока не кончится файл
+    while (!feof(file)) {                                         // до конца файла
         if (fgetc(file) == '\n')
             c++;
     }
@@ -56,7 +56,7 @@ void  students_menu() {
     st = (struct student*)malloc(c * sizeof(struct student));
     fclose(file);
     file = fopen("students.csv", "r");
-    for (int k = 0; k < (c - 1); k++) {                              //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+    for (int k = 0; k < (c - 1); k++) {
         fgets(str, N, file);
         istr = strtok(str, sim);
         strncpy(st[k].z_book, istr, N);
@@ -76,7 +76,7 @@ void  students_menu() {
     while (1) {
         printf("\nВыберите операцию:\n1) Добавить студента\n2) Удалить студента по номеру зачетной книжки\n3) Редактировать информацию по студенту\n4) Просмотреть информацию по студенту\n5) Закончить работу\n");
         int choice;
-        scanf ("%d", &choice);                 //!!!!!!!
+        scanf ("%d", &choice);
         if (choice == 1) {
             struct student n_str;
             FILE* file2 = fopen("students.csv", "a+");
@@ -100,7 +100,7 @@ void  students_menu() {
             strncpy(n_z_book, str, N);
             j = 0;
             for (k = 0; k < c; k++) {
-                if (strcmp(n_z_book, st[k].z_book) == 0) {                // сравнение строк
+                if (strcmp(n_z_book, st[k].z_book) == 0) {                // сравнение strcmp
                     req_line = k + 1;
                 }
             }
@@ -169,7 +169,7 @@ void  students_menu() {
             st = (struct student*)calloc(c, sizeof(struct student));
             fclose(file);
             file = fopen("students.csv", "r");
-            for (int k = 0; k < (c - 1); k++) {                              //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+            for (int k = 0; k < (c - 1); k++) {
                 fgets(str, N, file);
                 istr = strtok(str, sim);
                 strncpy(st[k].z_book, istr, N);
@@ -205,7 +205,7 @@ void  students_menu() {
             strncpy(del_z_book, str, N);
             j = 0;
 
-                for (int k = 0; k < (c - 1); k++) {                       //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+                for (int k = 0; k < (c - 1); k++) {
                     if (strcmp(del_z_book, st[k].z_book) == 0) {
 
                         flag = 1;
@@ -234,7 +234,7 @@ file = fopen("students.csv", "w");
             strncpy(del_z_book, str, N);
             j = 0;
 
-                for (int k = 0; k < (c - 1); k++) {                       //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+                for (int k = 0; k < (c - 1); k++) {
                     if (strcmp(del_z_book, st[k].z_book) == 0) {
 
                         flag = 1;
@@ -265,7 +265,7 @@ file = fopen("students.csv", "w");
             strncpy(n_z_book, str, N);
             j = 0;
             for (k = 0; k < c; k++) {
-                if (strcmp(n_z_book, st[k].z_book) == 0) {                // сравнение строк
+                if (strcmp(n_z_book, st[k].z_book) == 0) {
                     req_line = k + 1;
                 }
             }
@@ -334,7 +334,7 @@ file = fopen("students.csv", "w");
             st = (struct student*)calloc(c, sizeof(struct student));
             fclose(file);
             file = fopen("students.csv", "r");
-            for (int k = 0; k < (c - 1); k++) {                              //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+            for (int k = 0; k < (c - 1); k++) {
                 fgets(str, N, file);
                 istr = strtok(str, sim);
                 strncpy(st[k].z_book, istr, N);
@@ -358,8 +358,8 @@ file = fopen("students.csv", "w");
         else if (choice == 4) {
 printf("\n");
     SetConsoleCP(1251);
-    SetConsoleOutputCP(1251); //руссификатор для записи данных в файл
-    setlocale(LC_ALL, "Rus"); //руссификатор для консоли
+    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Rus");
     FILE* file;
 
     char str[N];
@@ -369,12 +369,12 @@ printf("\n");
     char sim[N] = ";";
     char* istr;
 
-    file = fopen("students.csv", "r");                               // подсчет строк
+    file = fopen("students.csv", "r");
     if (file == NULL) {
         printf("No such file");
         exit(-333);
     }
-    while (!feof(file)) {                                         // пока не кончится файл
+    while (!feof(file)) {
         if (fgetc(file) == '\n')
             c++;
     }
@@ -384,7 +384,7 @@ printf("\n");
     st = (struct student*)malloc(c * sizeof(struct student));
     fclose(file);
     file = fopen("students.csv", "r");
-    for (int k = 0; k < (c - 1); k++) {                              //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+    for (int k = 0; k < (c - 1); k++) {
         fgets(str, N, file);
         istr = strtok(str, sim);
         strncpy(st[k].z_book, istr, N);
@@ -413,17 +413,17 @@ void books_menu() {
 
     while (1) {
         SetConsoleCP(1251);
-        SetConsoleOutputCP(1251); //руссификатор для записи данных в файл
-        setlocale(LC_ALL, "Rus"); //руссификатор для консоли
+        SetConsoleOutputCP(1251);
+        setlocale(LC_ALL, "Rus");
         FILE* file;
 
         char str[N];
         int j = 0;
         int i = 0;
 
-        file = fopen("books.csv", "r");                               // подсчет строк
+        file = fopen("books.csv", "r");
         int c = 0;
-        while (!feof(file)) {                                         // пока не кончится файл
+        while (!feof(file)) {
             if (fgetc(file) == '\n')
                 c++;
         }
@@ -435,17 +435,17 @@ void books_menu() {
         file = fopen("books.csv", "r");
 
         fscanf(file, "%lld;", &lib[i].ISBN);
-        while (lib[i].ISBN > 0) {                                    // изначально записано огромное отрицательное число
-            while ((str[j] = fgetc(file)) != '\n') {                 // из-за того, что пробел ломает прогу, пришлось сделать копированием
+        while (lib[i].ISBN > 0) {                                    // огромное отрицательное число
+            while ((str[j] = fgetc(file)) != '\n') {                 //копирование
                 if (str[j] == ';') {
                     str[j] = '\0';
-                    strncpy(lib[i].author, str, N);                 // копируем содержимое массива
+                    strncpy(lib[i].author, str, N);                 // копирование массива
                     j = 0;
                     break; // для fgetc
                 }
                 else j++;
             }
-            while ((str[j] = fgetc(file)) != '\n') { // не EOF потому что на руссколой раскладке "я" на машинном языке = -1 (как и EOF)
+            while ((str[j] = fgetc(file)) != '\n') { // я это -1 поэтому без EOF)
                 if (str[j] == ';') {
                     str[j] = '\0';
                     strncpy(lib[i].b_name, str, N);
@@ -459,7 +459,7 @@ void books_menu() {
             printf("%10lld%30s%35s%6u%4u\n", lib[i].ISBN, lib[i].author, lib[i].b_name, lib[i].all_amount, lib[i].amount);
 
             i++;
-            fscanf(file, "%lld;", &lib[i].ISBN); //для перехода на следующую строку. если следующая строка пустая, то цикл прекратится и ничего не выведется
+            fscanf(file, "%lld;", &lib[i].ISBN); //для перехода на следующую строку. если следующая строка пустая то ничего не выведется
         }
 
         printf("\nВыберите операцию:\n1) Добавить книгу\n2) Удалить книгу\n3) Просмотр всей информации по книге \n4) Вывести информацию по всем книгам\n5) Завершить программу\n");
@@ -495,7 +495,7 @@ void books_menu() {
             j = 0;
             printf("\nВведите название книги: ");
 
-            str[j] = getchar();                       // во 2 раз где-то лишний символ
+            str[j] = getchar();
             while (str[j] != '\n') {
                 j++;
                 str[j] = getchar();
@@ -553,17 +553,17 @@ void books_menu() {
                 fclose(file);
         }
         else if (operation == 4) {
-                while (lib[i].ISBN > 0) {                                    // изначально записано огромное отрицательное число
-            while ((str[j] = fgetc(file)) != '\n') {                 // из-за того, что пробел ломает прогу, пришлось сделать копированием
+                while (lib[i].ISBN > 0) {
+            while ((str[j] = fgetc(file)) != '\n') {
                 if (str[j] == ';') {
                     str[j] = '\0';
-                    strncpy(lib[i].author, str, N);                 // копируем содержимое массива
+                    strncpy(lib[i].author, str, N);
                     j = 0;
                     break; // для fgetc
                 }
                 else j++;
             }
-            while ((str[j] = fgetc(file)) != '\n') { // не EOF потому что на руссколой раскладке "я" на машинном языке = -1 (как и EOF)
+            while ((str[j] = fgetc(file)) != '\n') {
                 if (str[j] == ';') {
                     str[j] = '\0';
                     strncpy(lib[i].b_name, str, N);
@@ -577,7 +577,7 @@ void books_menu() {
             printf("%10lld%30s%35s%6u%4u\n", lib[i].ISBN, lib[i].author, lib[i].b_name, lib[i].all_amount, lib[i].amount);
 
             i++;
-            fscanf(file, "%lld;", &lib[i].ISBN); //для перехода на следующую строку. если следующая строка пустая, то цикл прекратится и ничего не выведется
+            fscanf(file, "%lld;", &lib[i].ISBN);
         }
         }
         else if (operation == 5) {
@@ -591,8 +591,8 @@ void books_menu() {
 int main()
 {
     SetConsoleCP(1251);
-    SetConsoleOutputCP(1251); //руссификатор для записи данных в файл
-    setlocale(LC_ALL, "Rus"); //руссификатор для консоли
+    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Rus");
     FILE* file;
 
     char str[N];
@@ -601,13 +601,13 @@ int main()
     char sim[N] = ";";
     char* istr;
 
-    file = fopen("users.csv", "r");                               // подсчет строк
+    file = fopen("users.csv", "r");
     int c = 0;
     if (file == NULL) {
         printf("\nNo such file");
         exit(-333);
     }
-    while (!feof(file)) {                                         // пока не кончится файл
+    while (!feof(file)) {
         if (fgetc(file) == '\n')
             c++;
     }
@@ -617,7 +617,7 @@ int main()
     usr = (struct user*)malloc(c * sizeof(struct user));
     fclose(file);
     file = fopen("users.csv", "r");
-    for (int k = 0; k < (c - 1); k++) {                              //обычно в конце файл заканчивается пустой строкой, если нет, то убрать -1
+    for (int k = 0; k < (c - 1); k++) {
         fgets(str, N, file);
         istr = strtok(str, sim);
         strncpy(usr[k].login, istr, N);
@@ -628,7 +628,6 @@ int main()
         istr = strtok(NULL, sim);
         strncpy(usr[k].s_access, istr, N);
         istr = strtok(NULL, sim);
-        // fscanf(file, "%d;%d", &usr[k].b_access, &usr[k].s_access);
 
         printf("%25s%25s%15s%15s\n", usr[k].login, usr[k].pass, usr[k].b_access, usr[k].s_access);
     }
